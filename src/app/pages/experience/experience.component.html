@@ -1,0 +1,22 @@
+<article>
+    <div class="row" *ngFor="let experience of experience_content">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h3>{{ experience.experience_description }}
+                        <a class="m-3" href="{{ experience.url }}" *ngIf="experience.url !== ''"><i
+                                class=" lead bi bi-box-arrow-in-up-right"></i></a>
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p *ngFor="let experience_paragraph of experience.experience_paragraphs">
+                        {{ experience_paragraph }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</article>

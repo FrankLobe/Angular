@@ -1,0 +1,25 @@
+<article>
+    <div class="row" *ngFor="let education of education_content">
+        <div class="col-md-3 col-12">
+            <div class="row">
+                <div class="col-12">
+                    <p>{{education.year}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h3>{{education.program}}</h3>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <a class="text-primary align-middle pt-5" href="{{education.url}}" target="_blank">
+                    <img class="img-fluid mt-3" alt="logo" src="assets/images/{{education.logo}}" />
+                </a>
+            </div>
+            <div class="col-xs-6">
+            </div>
+        </div>
+    </div>
+</article>

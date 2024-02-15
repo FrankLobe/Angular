@@ -1,0 +1,146 @@
+<form #contactForm="ngForm" (ngSubmit)="onSubmit()">
+    <div id="errors">
+        <p class="alert alert-danger mb-2" *ngFor="let errorMessage of contact.errorMessages">{{errorMessage}}</p>
+    </div>
+    <section>
+        <h4>Contact Information</h4>
+        <div class="container p-5 my-5 border">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="firstNameLabel" for="firstName" class="form-label">First Name</label>
+                        <input id="firstName" name="firstName" type="text" class="form-control" [(ngModel)]="contact.firstName" required 
+                        [ngClass]="{'is-invalid': contactForm.controls['firstName']?.invalid, 'is-valid': contactForm.controls['firstName']?.valid}" />
+                    </div>                    
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="lastNameLabel" for="lastName" class="form-label">Last Name</label>
+                        <input id="lastName" name="lastName" type="text" class="form-control is-valid" [(ngModel)]="contact.lastName" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="titleLabel" for="title" class="form-label">Title</label>
+                        <input id="title" name="title" type="text" class="form-control is-valid" [(ngModel)]="contact.title" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="onlineProfileLabel" for="onlineProfile" class="form-label">Online Profile</label>
+                        <input id="onlineProfile" name="onlineProfile" type="url" class="form-control is-valid" [(ngModel)]="contact.onlineProfile" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="emailAddressLabel" for="emailAddress" class="form-label">Email Address</label>
+                        <input id="emailAddress" name="emailAddress" type="email" class="form-control is-invalid" [(ngModel)]="contact.emailAddress" required email 
+                        [ngClass]="{'is-invalid': contactForm.controls['emailAddress']?.invalid, 'is-valid': contactForm.controls['emailAddress']?.valid}" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="telephoneNumberLabel" for="telephoneNumber" class="form-label">Telephone Number</label>
+                        <input id="telephoneNumber" name="telephoneNumber" type="tel" class="form-control is-invalid" [(ngModel)]="contact.telephoneNumber" required 
+                        [ngClass]="{'is-invalid': contactForm.controls['telephoneNumber']?.invalid, 'is-valid': contactForm.controls['telephoneNumber']?.valid}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h4>Company Information</h4>
+        <div class="container p-5 my-5 border">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="companyNameLabel" for="companyName" class="form-label">Company Name</label>
+                        <input id="companyName" name="companyName" type="text" class="form-control is-invalid" [(ngModel)]="contact.companyName" required 
+                        [ngClass]="{'is-invalid': contactForm.controls['companyName']?.invalid, 'is-valid': contactForm.controls['companyName']?.valid}"/>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="companyWebsiteLabel" for="companyWebsite" class="form-label">Company Website</label>
+                        <input id="companyWebsite" name="companyWebsite" type="url" class="form-control is-valid" [(ngModel)]="contact.companyWebsite" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="companyAddressLabel" for="companyAddress" class="form-label">Company Address</label>
+                        <input id="companyAddress" name="companyAddress" type="text" class="form-control is-valid" [(ngModel)]="contact.companyAddress" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="cityLabel" for="city" class="form-label">City</label>
+                        <input id="city" name="city" type="text" class="form-control is-valid" [(ngModel)]="contact.city" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label id="provinceLabel" for="province" class="form-label">{{ getProvinceLabel() }}</label>
+                        <input id="province" name="province" type="text" class="form-control is-valid" [(ngModel)]="contact.province" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="postalCodeLabel" for="postalCode" class="form-label">{{ getPostalCodeLabel() }}</label>
+                        <input id="postalCode" name="postalCode" type="text" class="form-control is-valid" [(ngModel)]="contact.postalCode" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="countryLabel" for="country" class="form-label">Country</label>
+                        <select id="country" name="country" class="form-select is-valid" [(ngModel)]="contact.country">
+                            <option>Canada</option>
+                            <option>United States</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h4>Job Information</h4>
+        <div class="container p-5 my-5 border">
+            <div class="row">
+                <div class="col-md-12 col-12">
+                    <div class="form-group mb-3">
+                        <label id="positionTitleLabel" for="positionTitle" class="form-label">Position Title</label>
+                        <input id="positionTitle" name="positionTitle" type="text" class="form-control is-valid" [(ngModel)]="contact.positionTitle" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="jobPostingLabel" for="jobPosting" class="form-label">Job Posting URL</label>
+                        <input id="jobPosting" name="jobPosting" type="url" class="form-control is-valid" [(ngModel)]="contact.jobPosting" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label id="jobTypeLabel" for="jobType" class="form-label">Job Type</label>
+                        <select id="jobType" name="jobType" class="form-select is-valid" [(ngModel)]="contact.jobType">
+                            <option>Progress OpenEdge 4GL/ABL Application Development</option>
+                            <option>Machine Learning Engineering</option>
+                            <option>Website Development</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button id="submitContact" type="submit" class="btn btn-primary">Submit</button>
+</form>
